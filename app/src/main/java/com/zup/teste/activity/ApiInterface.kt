@@ -1,13 +1,13 @@
 package com.zup.teste.activity
 
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiInterface {
 
-    @GET("?s=Game of&apikey=ed42b924")
-
-    fun getFilmes(): Call<FilmesModel>
+    @GET("?apikey=ed42b924")
+    fun getFilmes(@Query("s") nome: String): Call<FilmesModel>
 
 }

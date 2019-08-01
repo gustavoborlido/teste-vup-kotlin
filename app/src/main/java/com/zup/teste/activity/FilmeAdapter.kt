@@ -2,14 +2,17 @@ package com.zup.teste.activity
 
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.zup.teste.R
+import java.net.URL
 
-class FilmeAdapter(private var dataList: List<FilmeModel>, private val context: Context) : RecyclerView.Adapter<FilmeAdapter.ViewHolder>() {
+class FilmeAdapter(private var dataList: List<FilmeModel>, private val context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<FilmeAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,16 +24,22 @@ class FilmeAdapter(private var dataList: List<FilmeModel>, private val context: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val filmeModel=dataList.get(position)
+        val filmeModel = dataList.get(position)
 
-        holder.titleTextView.text = filmeModel.titulo
+        holder.titulo.text = filmeModel.titulo
+        holder.ano.text = filmeModel.ano
+        Glide.with(context).load(filmeModel.poster).into(holder.poster)
     }
 
 
-    class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView) {
-        lateinit var titleTextView:TextView
+    class ViewHolder(itemLayoutView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemLayoutView) {
+        var titulo: TextView
+        var ano: TextView
+        var poster: ImageView
         init {
-            titleTextView=itemLayoutView.findViewById(R.id.title)
+            titulo = itemLayoutView.findViewById(R.id.titulo)
+            ano = itemLayoutView.findViewById(R.id.ano)
+            poster = itemLayoutView.findViewById(R.id.poster)
 
         }
 

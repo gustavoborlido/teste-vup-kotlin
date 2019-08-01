@@ -8,7 +8,15 @@ data class FilmeModel(
 
     @Expose
     @SerializedName("Title")
-    val titulo: String
+    val titulo: String,
+
+    @Expose
+    @SerializedName("Year")
+    val ano: String,
+
+    @Expose
+    @SerializedName("Poster")
+    val poster: String
 )
 
 data class FilmesModel(
