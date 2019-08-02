@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import com.zup.teste.R
 import com.zup.teste.activity.ApiClient
 import com.zup.teste.activity.FilmeAdapter
@@ -38,12 +39,12 @@ class TodosFilmesFragment : androidx.fragment.app.Fragment() {
 
         recyclerView = view.findViewById(R.id.recycler_view)
 
-
         var adapter = FilmeAdapter(dataList, context!!)
-
         adapter.itemClick = object: FilmeAdapter.ItemClick {
             override fun onClick(filme: FilmeModel) {
-                Log.d("TAG", "TESTE")
+                val fm: FragmentManager? = fragmentManager
+                val detalhesDialogFragment: DetalhesDialogFragment = DetalhesDialogFragment.newInstance(filme.id)
+                detalhesDialogFragment.show(fm, "detalhes_fragment")
             }
         }
 
@@ -75,6 +76,7 @@ class TodosFilmesFragment : androidx.fragment.app.Fragment() {
 
         progressBar!!.visibility = View.VISIBLE
         semRegistros!!.visibility = View.GONE
+        recyclerView!!.visibility = View.GONE
 
         val call: Call<FilmesModel> = ApiClient.getClient.getFilmes(texto)
         call.enqueue(object : Callback<FilmesModel> {

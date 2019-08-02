@@ -10,4 +10,7 @@ interface ApiInterface {
     @GET("?apikey=ed42b924")
     fun getFilmes(@Query("s") nome: String): Call<FilmesModel>
 
+    @GET("?apikey=ed42b924")
+    fun getFilme(@Query("i") nome: String): Call<FilmeModel>
+
 }
