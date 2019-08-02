@@ -12,8 +12,15 @@ import com.bumptech.glide.Glide
 import com.zup.teste.R
 import java.net.URL
 
-class FilmeAdapter(private var dataList: List<FilmeModel>, private val context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<FilmeAdapter.ViewHolder>() {
+class FilmeAdapter(private var dataList: List<FilmeModel>, private val context: Context) : RecyclerView.Adapter<FilmeAdapter.ViewHolder>() {
 
+
+    interface ItemClick
+    {
+        fun onClick(filme: FilmeModel)
+    }
+
+    var itemClick: ItemClick? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.list_filme_item, parent, false))
@@ -28,11 +35,19 @@ class FilmeAdapter(private var dataList: List<FilmeModel>, private val context: 
 
         holder.titulo.text = filmeModel.titulo
         holder.ano.text = filmeModel.ano
-        Glide.with(context).load(filmeModel.poster).into(holder.poster)
+        Glide.with(context).load(filmeModel.poster).placeholder(R.drawable.image).into(holder.poster)
+
+        if(itemClick != null)
+        {
+            holder?.itemView?.setOnClickListener { v ->
+                itemClick?.onClick(dataList.get(position))
+            }
+        }
+
     }
 
 
-    class ViewHolder(itemLayoutView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemLayoutView) {
+    class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView) {
         var titulo: TextView
         var ano: TextView
         var poster: ImageView
