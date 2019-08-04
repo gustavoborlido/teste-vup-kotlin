@@ -1,18 +1,23 @@
 package com.zup.teste.activity.fragment
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.Toolbar
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import com.zup.teste.R
 import com.zup.teste.activity.ApiClient
@@ -27,7 +32,6 @@ class TodosFilmesFragment : androidx.fragment.app.Fragment() {
 
     var dataList = ArrayList<FilmeModel>()
     lateinit var recyclerView: RecyclerView
-    lateinit var adapter: FilmeAdapter
     var pesquisar: EditText? = null
     var pesquisarBtn: ImageButton? = null
     var semRegistros: TextView? = null
@@ -43,7 +47,7 @@ class TodosFilmesFragment : androidx.fragment.app.Fragment() {
         adapter.itemClick = object: FilmeAdapter.ItemClick {
             override fun onClick(filme: FilmeModel) {
                 val fm: FragmentManager? = fragmentManager
-                val detalhesDialogFragment: DetalhesDialogFragment = DetalhesDialogFragment.newInstance(filme.id)
+                val detalhesDialogFragment: DetalhesDialogFragment = DetalhesDialogFragment.newInstance(filme.id, null)
                 detalhesDialogFragment.show(fm, "detalhes_fragment")
             }
         }
@@ -57,6 +61,7 @@ class TodosFilmesFragment : androidx.fragment.app.Fragment() {
 
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        toolbar.setBackgroundColor(resources.getColor(R.color.colorPrimary))
 
 
         pesquisarBtn!!.setOnClickListener {
@@ -68,11 +73,29 @@ class TodosFilmesFragment : androidx.fragment.app.Fragment() {
             }
         }
 
+
+        pesquisar!!.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+
+                var texto = pesquisar!!.text.toString()
+
+                if(!texto.isEmpty()){
+                    buscarFilmes(texto)
+                }
+
+                return@OnKeyListener true
+            }
+            false
+        })
+
         return view
     }
 
 
     fun buscarFilmes(texto: String){
+
+        val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view!!.windowToken, 0)
 
         progressBar!!.visibility = View.VISIBLE
         semRegistros!!.visibility = View.GONE

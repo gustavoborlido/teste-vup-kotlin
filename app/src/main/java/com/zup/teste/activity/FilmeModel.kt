@@ -1,14 +1,18 @@
 package com.zup.teste.activity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 
+@Entity
 data class FilmeModel(
 
     @Expose
     @SerializedName("imdbID")
+    @PrimaryKey
     val id: String,
 
     @Expose

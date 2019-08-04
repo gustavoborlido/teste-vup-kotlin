@@ -10,12 +10,11 @@
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme"
                  tools:ignore="GoogleAppIndexingWarning"
-                 android:usesCleartextTraffic="true"
-    >
+                 android:usesCleartextTraffic="true">
 
         <activity android:name=".activity.MainActivity"
                   android:configChanges="orientation|keyboardHidden"
-        >
+                  android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
