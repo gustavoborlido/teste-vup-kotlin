@@ -1,17 +1,16 @@
-package com.zup.teste.activity.fragment
+package com.zup.teste.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
 import com.zup.teste.R
-import com.zup.teste.activity.AppDatabase
-import com.zup.teste.activity.FilmePagerAdapter
-import com.zup.teste.activity.FilmeModel
-import com.zup.teste.activity.RefreshListInterface
+import com.zup.teste.utilities.AppDatabase
+import com.zup.teste.adapter.FilmePagerAdapter
+import com.zup.teste.model.FilmeModel
+import com.zup.teste.interfaces.RefreshListInterface
 
 class MeusFilmesFragment : RefreshListInterface, androidx.fragment.app.Fragment() {
 

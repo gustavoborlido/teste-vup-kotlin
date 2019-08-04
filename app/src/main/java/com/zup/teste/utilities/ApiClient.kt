@@ -1,6 +1,7 @@
-package com.zup.teste.activity
+package com.zup.teste.utilities
 
 import com.google.gson.GsonBuilder
+import com.zup.teste.interfaces.ApiInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +17,7 @@ object ApiClient {
                 .setLenient()
                 .create()
             val interceptor = HttpLoggingInterceptor()
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
             val retrofit = Retrofit.Builder()

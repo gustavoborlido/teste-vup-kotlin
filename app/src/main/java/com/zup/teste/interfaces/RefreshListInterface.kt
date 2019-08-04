@@ -1,4 +1,4 @@
-package com.zup.teste.activity
+package com.zup.teste.interfaces
 
 interface RefreshListInterface {
 

@@ -2,12 +2,10 @@ package com.zup.teste.activity;
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.fragment.app.Fragment
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.zup.teste.R
-import com.zup.teste.activity.fragment.MeusFilmesFragment
-import com.zup.teste.activity.fragment.TodosFilmesFragment
+import com.zup.teste.fragment.MeusFilmesFragment
+import com.zup.teste.fragment.TodosFilmesFragment
 
 class MainActivity : AppCompatActivity() {
 

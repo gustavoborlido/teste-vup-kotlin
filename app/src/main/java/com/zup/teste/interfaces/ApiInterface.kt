@@ -1,8 +1,9 @@
-package com.zup.teste.activity
+package com.zup.teste.interfaces
 
+import com.zup.teste.model.FilmeModel
+import com.zup.teste.model.FilmesModel
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiInterface {

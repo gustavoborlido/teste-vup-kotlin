@@ -1,4 +1,4 @@
-package com.zup.teste.activity
+package com.zup.teste.adapter
 
 
 import android.content.Context
@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.zup.teste.R
-import java.net.URL
+import com.zup.teste.model.FilmeModel
 
 class FilmeAdapter(private var dataList: List<FilmeModel>, private val context: Context) : RecyclerView.Adapter<FilmeAdapter.ViewHolder>() {
 

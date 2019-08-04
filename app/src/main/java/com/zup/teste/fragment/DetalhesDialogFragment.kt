@@ -1,7 +1,5 @@
-package com.zup.teste.activity.fragment
+package com.zup.teste.fragment
 
-import android.app.Application
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -11,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.zup.teste.R
-import com.zup.teste.activity.*
+import com.zup.teste.interfaces.RefreshListInterface
+import com.zup.teste.model.FilmeModel
+import com.zup.teste.utilities.ApiClient
+import com.zup.teste.utilities.AppDatabase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

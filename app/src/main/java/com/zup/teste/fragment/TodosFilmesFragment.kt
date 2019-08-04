@@ -1,7 +1,6 @@
-package com.zup.teste.activity.fragment
+package com.zup.teste.fragment
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,13 +16,12 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import com.zup.teste.R
-import com.zup.teste.activity.ApiClient
-import com.zup.teste.activity.FilmeAdapter
-import com.zup.teste.activity.FilmeModel
-import com.zup.teste.activity.FilmesModel
+import com.zup.teste.utilities.ApiClient
+import com.zup.teste.adapter.FilmeAdapter
+import com.zup.teste.model.FilmeModel
+import com.zup.teste.model.FilmesModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

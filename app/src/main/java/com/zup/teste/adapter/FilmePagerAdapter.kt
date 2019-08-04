@@ -1,4 +1,4 @@
-package com.zup.teste.activity
+package com.zup.teste.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,8 +12,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.zup.teste.R
-import com.zup.teste.activity.fragment.DetalhesDialogFragment
+import com.zup.teste.fragment.DetalhesDialogFragment
 import androidx.appcompat.app.AppCompatActivity
+import com.zup.teste.model.FilmeModel
+import com.zup.teste.interfaces.RefreshListInterface
 
 class FilmePagerAdapter(var mContext: Context, var filmes: List<FilmeModel>, var refreshList: RefreshListInterface) : PagerAdapter() {
     var mLayoutInflater: LayoutInflater
